@@ -1,4 +1,4 @@
-package com.gorban.easy;
+package com.gorban.easy.lambdas;
 
 import java.awt.event.ActionListener;
 import java.util.*;
