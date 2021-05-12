@@ -53,6 +53,21 @@ public class LambdaStreams {
 
         // Example 3.23
         System.out.println("Long tracks 4: " + findLongTracks4(albums));
+
+        // Exercise 1a
+        int sumUp = addUp(List.of(1,2,3,4,5).stream());
+        System.out.println("sumUp: " + sumUp);
+
+        // Exercise 1b
+
+
+    }
+
+    // exercise 1a
+    private static int addUp(Stream<Integer> numbers){
+        return numbers
+                .map(num -> num.intValue())
+                .reduce(0, (num1, num2) -> num1 + num2);
     }
 
     private static Set<String> findLongTracks4(List<Album> albums){
