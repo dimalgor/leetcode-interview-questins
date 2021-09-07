@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class ExamplesFromDocumentation {
 
-    static class Person{
+    static class Person {
         private String name;
 
         public String getName() {
@@ -20,7 +20,25 @@ public class ExamplesFromDocumentation {
         }
     }
 
-    public static void main(String[]args){
+    static class Employee {
+        private String name;
+        private int salary;
+
+        public Employee(String name, int salary) {
+            this.name = name;
+            this.salary = salary;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public int getSalary() {
+            return salary;
+        }
+    }
+
+    public static void main(String[] args) {
         final var persons = new ArrayList<Person>();
         persons.add(new Person("Ivanov"));
         persons.add(new Person("Petrov"));
@@ -35,8 +53,13 @@ public class ExamplesFromDocumentation {
         String joined = persons.stream().map(Person::getName).collect(Collectors.joining(" + "));
         System.out.println("Joined people: " + joined);
 
+        final var employees = List.of(new Employee("Ivanov", 100),
+                new Employee("Petrov", 200),
+                new Employee("Sidorov", 300));
 
+        final var employeesSalary = employees.stream()
+                .collect(Collectors.summarizingInt(Employee::getSalary));
 
-
+        System.out.println("employeesSalary: " + employeesSalary);
     }
 }
